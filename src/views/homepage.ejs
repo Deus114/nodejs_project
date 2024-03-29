@@ -10,32 +10,41 @@
 
 <body>
     <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/create">Create User</a></li>
     </ul>
-    <div class="form-add">
-        <form action="/create-user" method="post">
-            <fieldset>
-                <legend>Form user</legend>
-                <div class="input-group">
-                    <label>Name: </label>
-                    <input type="text" name="name" />
-                </div>
-                <div class="input-group">
-                    <label>Email: </label>
-                    <input type="text" name="email" />
-                </div>
-                <div class="input-group">
-                    <label>City: </label>
-                    <input type="text" name="city" />
-                </div>
-                <div class="input-group">
-                    <button>Save</button>
-                </div>
-            </fieldset>
-        </form>
+    <div class="user-table">
+        <h2>List Users</h2>
+        <hr>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>EMAIL</th>
+                <th>NAME</th>
+                <th>CITY</th>
+                <th>ACTION</th>
+            </tr>
+            <% listUser.forEach(function(user, index) { %>
+                <tr>
+                    <td>
+                        <%= index+1 %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.city %>
+                    </td>
+                    <td>
+                        <button><a class="nondec" href="/update/<%=user.id%>">edit</a></button>
+                        <button>delete</button>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
     </div>
 </body>
 
